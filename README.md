@@ -38,14 +38,9 @@ IDLE → START → DATA → STOP → IDLE
 > **Add your block diagram image below this line.**
 
 ```text
-[INSERT BLOCK DIAGRAM IMAGE HERE]
+[blockdiagran_uart]
 ```
 
-Example Markdown after uploading the image:
-
-```markdown
-![UART Transmitter Block Diagram](block_diagram.png)
-```
 
 ---
 
@@ -352,4 +347,18 @@ The design can be extended with:
 This project demonstrates the RTL implementation and simulation of an **8-bit UART Transmitter** using Verilog HDL. The design uses an FSM, counters, and registers to generate a standard 8-N-1 UART serial frame and provides status signals for transmission control.
 
 It provides a foundation for developing more advanced UART-based communication systems and SoC peripheral interfaces.
+## 👩‍💻 Author
+
+**Dikshitha M.**
+
+Electronics and Communication Engineering | RTL/VLSI Enthusiast
+
+🔗 **LinkedIn:** [Dikshitha M.](https://www.linkedin.com/in/dikshitha-m-34355b308/)
+
+---
+
+## 📄 License
+
+This project is created for educational and portfolio purposes.
+
 
