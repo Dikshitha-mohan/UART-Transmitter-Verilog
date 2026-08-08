@@ -1,0 +1,104 @@
+`timescale 1ns/1ps
+
+module tb_uart_tx;
+
+    reg        clk;
+    reg        reset;
+    reg        tx_start;
+    reg  [7:0] tx_data;
+
+    wire       tx;
+    wire       busy;
+    wire       tx_done;
+
+
+    // Instantiate UART transmitter
+    uart_tx #(
+        .CLKS_PER_BIT(4)
+    ) uut (
+        .clk(clk),
+        .reset(reset),
+        .tx_start(tx_start),
+        .tx_data(tx_data),
+        .tx(tx),
+        .busy(busy),
+        .tx_done(tx_done)
+    );
+
+
+    // --------------------------------
+    // Clock Generation
+    // --------------------------------
+    initial begin
+
+        clk = 1'b0;
+
+        forever #5 clk = ~clk;
+
+    end
+
+
+    // --------------------------------
+    // Test Sequence
+    // --------------------------------
+    initial begin
+
+        // VCD waveform
+        $dumpfile("dump.vcd");
+        $dumpvars(0, tb_uart_tx);
+
+
+        // Initial values
+        reset    = 1'b1;
+        tx_start = 1'b0;
+        tx_data  = 8'b0;
+
+
+        // Reset
+        #20;
+
+        reset = 1'b0;
+
+
+        // --------------------------------
+        // TRANSMIT 0xA5
+        // --------------------------------
+        #10;
+
+        tx_data  = 8'hA5;
+        tx_start = 1'b1;
+
+        #10;
+
+        tx_start = 1'b0;
+
+
+        // Wait for transmission
+        wait(tx_done);
+
+
+        #20;
+
+
+        // --------------------------------
+        // TRANSMIT 0x3C
+        // --------------------------------
+        tx_data  = 8'h3C;
+        tx_start = 1'b1;
+
+        #10;
+
+        tx_start = 1'b0;
+
+
+        wait(tx_done);
+
+
+        #20;
+
+
+        $finish;
+
+    end
+
+endmodule
