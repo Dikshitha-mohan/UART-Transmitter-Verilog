@@ -35,11 +35,8 @@ IDLE → START → DATA → STOP → IDLE
 
 ## 🧩 Block Diagram
 
-> **Add your block diagram image below this line.**
+<img width="1536" height="1024" alt="blockdiagran_uart" src="https://github.com/user-attachments/assets/ac27cecf-c4c2-4ff9-98ce-428cbf14fa8f" />
 
-```text
-[blockdiagran_uart]
-```
 
 
 ---
